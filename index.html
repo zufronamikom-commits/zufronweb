@@ -18,7 +18,529 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+:root {
+  --bg-dark: #0B0F19;
+  --bg-light: #121212;
+  --text-main: #E5E7EB;
+  --text-muted: #9CA3AF;
+  --green: #1DB954;
+  --gold: #C9A24D;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-main);
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10%;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.logo span {
+  color: var(--green);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 120px 10% 80px;
+}
+
+.hero h1 {
+  font-family: 'Poppins';
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 20px 0;
+  color: var(--text-muted);
+}
+
+.cta {
+  margin: 30px 0;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.primary {
+  background: var(--green);
+  color: #000;
+}
+
+.secondary {
+  border: 1px solid var(--green);
+  color: var(--green);
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.card {
+  background: var(--bg-light);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+
+/* SECTION */
+.section {
+  padding: 100px 10%;
+}
+
+.section.dark {
+  background: var(--bg-light);
+}
+
+.section h2 {
+  font-family: 'Poppins';
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
+}
+
+.chart-box {
+  max-width: 800px;
+  margin: auto;
+}
+
+.about-box {
+  max-width: 800px;
+  margin: auto;
+  background: var(--bg-light);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.about-box p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.values {
+  list-style: none;
+}
+
+.values li {
+  padding: 10px 0;
+  color: var(--green);
+}
+
+.disclaimer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* SETUP FAVORITE - GRID FOTO */
+.setup-card {
+  background: var(--bg-light);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 2px solid transparent;
+}
+
+.setup-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(29, 185, 84, 0.5);
+  border-color: var(--green);
+}
+
+.setup-card h3 {
+  font-family: 'Poppins';
+  color: var(--green);
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.setup-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.setup-thumbnail {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 300px;
+}
+
+.setup-thumbnail:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(29, 185, 84, 0.5);
+}
+
+.setup-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.setup-thumbnail:hover img {
+  transform: scale(1.1);
+}
+
+.setup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(29, 185, 84, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.setup-thumbnail:hover .setup-overlay {
+  opacity: 1;
+}
+
+.setup-overlay i {
+  font-size: 48px;
+  color: #fff;
+}
+
+/* SETUP DETAIL */
+.setup-detail {
+  display: none;
+  margin-top: 40px;
+  padding: 40px;
+  background: var(--bg-light);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  border: 2px solid var(--green);
+}
+
+.setup-detail.active {
+  display: block;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.setup-detail h3 {
+  font-family: 'Poppins';
+  color: var(--green);
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.setup-subtitle {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.setup-detail p {
+  color: var(--text-main);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.setup-detail img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid var(--green);
+}
+
+/* CONTACT */
+.contact-form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.social {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.social a {
+  color: var(--text-main);
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  color: var(--text-muted);
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  .navbar {
+    padding: 20px 5%;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    background: var(--bg-light);
+    width: 200px;
+    padding: 20px;
+    transition: .3s;
+  }
+
+  .nav-links.active {
+    right: 10%;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hero {
+    padding: 80px 5% 60px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn {
+    display: block;
+    width: 90%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  .section {
+    padding: 60px 5%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    width: 90%;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+  }
+
+  .about-box {
+    padding: 20px;
+  }
+
+  .setup-thumbnail {
+    height: 250px;
+  }
+
+  .setup-overlay i {
+    font-size: 36px;
+  }
+
+  .setup-detail {
+    padding: 25px;
+    margin-top: 30px;
+  }
+
+  .setup-detail h3 {
+    font-size: 24px;
+  }
+
+  .setup-subtitle {
+    font-size: 14px;
+  }
+
+  .setup-detail p {
+    font-size: 14px;
+  }
+}
+
+@media(max-width: 480px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .section h2 {
+    font-size: 28px;
+  }
+
+  .nav-links {
+    width: 70%;
+  }
+
+  .setup-thumbnail {
+    height: 200px;
+  }
+
+  .setup-overlay i {
+    font-size: 30px;
+  }
+
+  .setup-detail {
+    padding: 20px;
+  }
+
+  .setup-detail h3 {
+    font-size: 20px;
+  }
+
+  .setup-subtitle {
+    font-size: 13px;
+  }
+
+  .setup-detail p {
+    font-size: 13px;
+  }
+
+  .setup-card {
+    padding: 25px;
+  }
+
+  .setup-card h3 {
+    font-size: 20px;
+  }
+
+  .setup-card p {
+    font-size: 13px;
+  }
+}
+  </style>
 </head>
 <body>
 
@@ -33,6 +555,7 @@
       <li><a href="#performance">Performance</a></li>
       <li><a href="#strategy">Strategy</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="#setupfav">Setup Favorite</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
 
@@ -85,9 +608,9 @@
     </p>
 
     <ul class="values">
-      <li>✔ Risk Management First</li>
-      <li>✔ Consistency Over Hype</li>
-      <li>✔ Mindset & Psychology Above Strategy</li>
+      <li>✓ Risk Management First</li>
+      <li>✓ Consistency Over Hype</li>
+      <li>✓ Mindset & Psychology Above Strategy</li>
     </ul>
   </div>
 </section>
@@ -141,8 +664,50 @@
   </div>
 </section>
 
+<!-- ================= SETUP FAVORITE ================= -->
+<section id="setupfav" class="section">
+  <h2>Setup Favorite</h2>
+  <p class="subtitle">Klik untuk melihat penjelasan setup secara detail</p>
+
+  <div class="grid">
+    <div class="setup-card" onclick="toggleSetup('setup1')">
+      <h3>New York Sesi</h3>
+      <p>Set-Up Favorite</p>
+    </div>
+    <div class="setup-card" onclick="toggleSetup('setup2')">
+      <h3>Setup 2</h3>
+      <p>Breakout Retest</p>
+    </div>
+    <div class="setup-card" onclick="toggleSetup('setup3')">
+      <h3>Setup 3</h3>
+      <p>Liquidity Grab</p>
+    </div>
+  </div>
+
+  <!-- Setup 1 Detail -->
+  <div id="setup1" class="setup-detail">
+    <h3>New York Sesi</h3>
+    <p>Setup ini fokus pada identifikasi zona supply dan demand yang fresh dengan minimal touch. Entry dilakukan saat price rejection dari zona dengan konfirmasi candlestick pattern.</p>
+    <img src="img/chart1.png" alt="Setup 1 Chart">
+  </div>
+
+  <!-- Setup 2 Detail -->
+  <div id="setup2" class="setup-detail">
+    <h3>Breakout Retest Setup</h3>
+    <p>Memanfaatkan momentum breakout struktur dengan menunggu retest pada area breakout. Entry saat konfirmasi rejection dengan volume yang mendukung pergerakan.</p>
+    <img src="img/chart2.png" alt="Setup 2 Chart">
+  </div>
+
+  <!-- Setup 3 Detail -->
+  <div id="setup3" class="setup-detail">
+    <h3>Liquidity Grab Setup</h3>
+    <p>Trading berdasarkan manipulasi likuiditas oleh smart money. Tunggu sweep liquidity pool (equal highs/lows) kemudian entry saat rejection dengan target ke opposing liquidity.</p>
+    <img src="https://via.placeholder.com/800x400/1DB954/FFFFFF?text=Setup+3+Chart" alt="Setup 3 Chart">
+  </div>
+</section>
+
 <!-- ================= CONTACT ================= -->
-<section id="contact" class="section">
+<section id="contact" class="section dark">
   <h2>Contact</h2>
 
   <form 
@@ -176,11 +741,9 @@
   </form>
 
   <div class="social">
-    <a href="https://www.instagram.com/zufronn_/
-    "><i class="fab fa-instagram"></i></a>
+    <a href="https://www.instagram.com/zufronn_/"><i class="fab fa-instagram"></i></a>
     <a href="#"><i class="fab fa-telegram"></i></a>
-    <a href="https://api.whatsapp.com/send/?phone=%2B6285135925176&text&type=phone_number&app_absent=0&wame_ctl=1
-    "><i class="fab fa-whatsapp"></i></a>
+    <a href="https://api.whatsapp.com/send/?phone=%2B6285135925176&text&type=phone_number&app_absent=0&wame_ctl=1"><i class="fab fa-whatsapp"></i></a>
   </div>
 </section>
 
@@ -189,6 +752,69 @@
   <p>© 2025 Zufron Trader. Educational purpose only.</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+// Hamburger Menu
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+
+// Chart.js - Equity Curve
+const ctx = document.getElementById("equityChart");
+
+new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    datasets: [
+      {
+        label: "Equity Growth",
+        data: [10000, 10300, 10100, 10800, 11500, 12000, 12800],
+        borderColor: "#1DB954",
+        tension: 0.4,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+    },
+  },
+});
+
+// Toggle Setup Function
+function toggleSetup(setupId) {
+  // Get all setup details
+  const allSetups = document.querySelectorAll('.setup-detail');
+  const selectedSetup = document.getElementById(setupId);
+  
+  // Close all setups first
+  allSetups.forEach(setup => {
+    if (setup.id !== setupId) {
+      setup.classList.remove('active');
+    }
+  });
+  
+  // Toggle the selected setup
+  selectedSetup.classList.toggle('active');
+  
+  // Smooth scroll to the detail section
+  if (selectedSetup.classList.contains('active')) {
+    setTimeout(() => {
+      selectedSetup.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  }
+}
+</script>
 </body>
 </html>
