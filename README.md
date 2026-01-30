@@ -42,7 +42,7 @@ Fokus pengembangan:
 ## 📸 Preview Website
 <div>
 <img src="img/LandingPages.png" alt="Preview Website" width="800">
-<img src="img/AfterClickBurger.png" alt="Preview Website" width="800">
+<img src="img/AfterClickBurger.png" alt="Preview Website" width="450">
 <img src="img/contactUS.png" alt="Preview Website" width="800">
 </div>
 
