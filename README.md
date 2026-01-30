@@ -74,8 +74,7 @@ Fokus pengembangan:
 <div 
 
 ### 🔜 NEXT (Planned)
-- Halaman Kursus  
-- Integrasi WhatsApp API  
+- Halaman Kursus 
 - Sistem Testimoni  
 - Dark & Light Mode  
 - Blog Edukasi Trading  
