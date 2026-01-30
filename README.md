@@ -40,7 +40,6 @@ Fokus pengembangan:
 ---
 
 ## 📸 Preview Website
-Tambahkan screenshot setelah upload ke repo (optional):
 <div>
 <img src="img/LandingPages.png" alt="Preview Website" width="800">
 <img src="img/AfterClickBurger.png" alt="Preview Website" width="800">
@@ -78,7 +77,8 @@ Hosting GitHub Pages
 BriellaYB
 Developer utama website ini.
 Fokus: frontend, desain, UX, deployment.
-GitHub: https://github.com/zufronamikom-commits
+GitHub: 
+https://github.com/zufronamikom-commits
 
 🤝 Kolaborator
 Zufron Trader Academy
