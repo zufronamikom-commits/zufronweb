@@ -3,8 +3,6 @@
 # 🎓 Zufron Trader Academy Web  
 **Kolaborasi Official antara Zufron Trader Academy × BriellaYB**
 
-🌐 **Live Website:**  
-https://zufronamikom-commits.github.io/zufronweb/
 
 ---
 
