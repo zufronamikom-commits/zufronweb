@@ -13,7 +13,7 @@
 ![Static Badge](https://img.shields.io/badge/Hosted%20On-GitHub%20Pages-black)
 
 ### ⭐ Additional Badges  
-![GitHub Repo stars](https://img.shields.io/github/stars/zufronamikom-commits/zufronweb?style=flat)
+<!-- ![GitHub Repo stars](https://img.shields.io/github/stars/zufronamikom-commits/zufronweb?style=flat) -->
 ![GitHub last commit](https://img.shields.io/github/last-commit/zufronamikom-commits/zufronweb)
 ![GitHub repo size](https://img.shields.io/github/repo-size/zufronamikom-commits/zufronweb)
 ![GitHub language count](https://img.shields.io/github/languages/count/zufronamikom-commits/zufronweb)
