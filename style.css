@@ -1,206 +1,595 @@
-:root {
-  --bg-dark: #0B0F19;
-  --bg-light: #121212;
-  --text-main: #E5E7EB;
-  --text-muted: #9CA3AF;
-  --green: #1DB954;
-  --gold: #C9A24D;
+/* Minimal custom styles for animations that Tailwind can't handle directly */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+.setup-detail.active {
+  display: block;
+  animation: slideDown 0.4s ease-out;
 }
 
+/* Font family fallback */
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-main);
 }
 
-/* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10%;
-  align-items: center;
+/* ========================================
+   GLOBAL SECTION ANIMATIONS
+   ======================================== */
+
+/* Base animation states */
+.animate-section {
+  opacity: 0;
 }
 
-.logo {
-  font-family: 'Poppins';
-  font-weight: 700;
-  font-size: 24px;
+.animate-section.section-visible {
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.logo span {
-  color: var(--green);
+.animate-section.section-hidden {
+  animation: fadeOutDown 0.6s ease-in forwards;
 }
 
-.nav-links {
-  display: flex;
-  gap: 30px;
+/* Hero Section Specific Animations */
+.hero-title {
+  opacity: 0;
 }
 
-.nav-links li {
-  list-style: none;
+.section-visible .hero-title {
+  animation: fadeInDown 0.8s ease-out 0.2s forwards;
 }
 
-.nav-links a {
-  color: var(--text-main);
-  text-decoration: none;
-  font-weight: 500;
+.section-hidden .hero-title {
+  animation: fadeOutUp 0.5s ease-in forwards;
 }
 
-.hamburger {
-  display: none;
-  font-size: 22px;
-  cursor: pointer;
+.hero-subtitle {
+  opacity: 0;
 }
 
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 120px 10% 80px;
+.section-visible .hero-subtitle {
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
 }
 
-.hero h1 {
-  font-family: 'Poppins';
-  font-size: 48px;
+.section-hidden .hero-subtitle {
+  animation: fadeOutDown 0.5s ease-in forwards;
 }
 
-.hero p {
-  margin: 20px 0;
-  color: var(--text-muted);
+.hero-buttons {
+  opacity: 0;
 }
 
-.cta {
-  margin: 30px 0;
+.section-visible .hero-buttons {
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
 }
 
-.btn {
-  padding: 12px 24px;
-  border-radius: 30px;
-  text-decoration: none;
-  margin: 5px;
+.section-hidden .hero-buttons {
+  animation: fadeOutDown 0.5s ease-in forwards;
 }
 
-.primary {
-  background: var(--green);
-  color: #000;
+.hero-stats .stat-card {
+  opacity: 0;
 }
 
-.secondary {
-  border: 1px solid var(--green);
-  color: var(--green);
+.section-visible .hero-stats .stat-card:nth-child(1) {
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
 }
 
-/* STATS */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-  gap: 20px;
-  margin-top: 60px;
+.section-visible .hero-stats .stat-card:nth-child(2) {
+  animation: fadeInUp 0.8s ease-out 1s forwards;
 }
 
-.card {
-  background: var(--bg-light);
-  padding: 25px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+.section-visible .hero-stats .stat-card:nth-child(3) {
+  animation: fadeInUp 0.8s ease-out 1.2s forwards;
 }
 
-/* SECTION */
-.section {
-  padding: 100px 10%;
+.section-visible .hero-stats .stat-card:nth-child(4) {
+  animation: fadeInUp 0.8s ease-out 1.4s forwards;
 }
 
-.section.dark {
-  background: var(--bg-light);
+/* About Section Animations */
+.about-content {
+  opacity: 0;
 }
 
-.section h2 {
-  font-family: 'Poppins';
-  text-align: center;
-  margin-bottom: 10px;
+.section-visible .about-content {
+  animation: scaleIn 0.8s ease-out 0.3s forwards;
 }
 
-.subtitle {
-  text-align: center;
-  color: var(--text-muted);
-  margin-bottom: 40px;
+.section-hidden .about-content {
+  animation: scaleOut 0.5s ease-in forwards;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 20px;
+/* Performance Chart Animation */
+.performance-chart {
+  opacity: 0;
 }
 
-.chart-box {
-  max-width: 800px;
-  margin: auto;
+.section-visible .performance-chart {
+  animation: fadeInScale 0.9s ease-out 0.3s forwards;
 }
 
-/* CONTACT */
-.contact-form {
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.section-hidden .performance-chart {
+  animation: fadeOutScale 0.5s ease-in forwards;
 }
 
-.contact-form input,
-.contact-form textarea {
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
+/* Strategy Cards Animations */
+.strategy-cards .strategy-card {
+  opacity: 0;
 }
 
-.social {
-  margin-top: 30px;
-  text-align: center;
+.section-visible .strategy-cards .strategy-card:nth-child(1) {
+  animation: fadeInLeft 0.8s ease-out 0.3s forwards;
 }
 
-.social a {
-  color: var(--text-main);
-  margin: 0 10px;
-  font-size: 20px;
+.section-visible .strategy-cards .strategy-card:nth-child(2) {
+  animation: fadeInLeft 0.8s ease-out 0.5s forwards;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #000;
-  color: var(--text-muted);
+.section-visible .strategy-cards .strategy-card:nth-child(3) {
+  animation: fadeInLeft 0.8s ease-out 0.7s forwards;
 }
 
-/* RESPONSIVE */
-@media(max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    right: -100%;
-    flex-direction: column;
-    background: var(--bg-light);
-    width: 200px;
-    padding: 20px;
-    transition: .3s;
+.section-visible .strategy-cards .strategy-card:nth-child(4) {
+  animation: fadeInLeft 0.8s ease-out 0.9s forwards;
+}
+
+.section-hidden .strategy-cards .strategy-card {
+  animation: fadeOutLeft 0.5s ease-in forwards;
+}
+
+/* Education Cards Animations */
+.education-cards .education-card {
+  opacity: 0;
+}
+
+.section-visible .education-cards .education-card:nth-child(1) {
+  animation: fadeInUp 0.8s ease-out 0.3s forwards;
+}
+
+.section-visible .education-cards .education-card:nth-child(2) {
+  animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+.section-visible .education-cards .education-card:nth-child(3) {
+  animation: fadeInUp 0.8s ease-out 0.7s forwards;
+}
+
+.section-hidden .education-cards .education-card {
+  animation: fadeOutDown 0.5s ease-in forwards;
+}
+
+/* Additional Animation Keyframes */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
   }
-
-  .nav-links.active {
-    right: 10%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .hamburger {
-    display: block;
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
   }
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
 
-  .hero h1 {
-    font-size: 34px;
+/* Scroll Reveal Animations for Setup Section */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
   }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+/* Setup rows - Initial hidden state */
+.setup-row.setup-hidden {
+  opacity: 0;
+}
+
+.setup-row.setup-hidden .setup-content {
+  opacity: 0;
+  transform: translateX(-80px);
+}
+
+.setup-row.setup-hidden .setup-title {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+/* Setup rows - Visible state with animations */
+.setup-row.setup-visible {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.setup-row.setup-visible .setup-content {
+  animation: fadeInLeft 0.9s ease-out 0.2s forwards;
+}
+
+.setup-row.setup-visible .setup-title {
+  animation: scaleIn 0.9s ease-out 0.4s forwards;
+}
+
+/* For even rows (yang reversed) */
+.setup-row:nth-child(even).setup-visible .setup-content {
+  animation: fadeInRight 0.9s ease-out 0.2s forwards;
+}
+
+/* Reverse animations when scrolling out */
+.setup-row.setup-hidden:not(.setup-visible) {
+  animation: fadeOutDown 0.6s ease-in forwards;
+}
+
+.setup-row.setup-hidden .setup-content {
+  animation: fadeOutLeft 0.6s ease-in forwards;
+}
+
+.setup-row:nth-child(even).setup-hidden .setup-content {
+  animation: fadeOutRight 0.6s ease-in forwards;
+}
+
+.setup-row.setup-hidden .setup-title {
+  animation: scaleOut 0.6s ease-in forwards;
+}
+
+/* Pulse animation for numbers */
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(29, 185, 84, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 40px rgba(29, 185, 84, 0.8), 0 0 60px rgba(29, 185, 84, 0.6);
+  }
+}
+
+.setup-title span {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Hover effect enhancements */
+.setup-content > div {
+  position: relative;
+  overflow: hidden;
+}
+
+.setup-content > div::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(29, 185, 84, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.setup-content > div:hover::before {
+  opacity: 1;
+  animation: shine 1.5s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+.setup-content img {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.setup-content > div:hover img {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 20px 50px rgba(29, 185, 84, 0.4);
+}
+
+/* Line decoration animation */
+.setup-title div div {
+  position: relative;
+}
+
+.setup-title div div::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1DB954, #10a54a);
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.setup-title:hover div div::after {
+  width: 80px;
+}
+
+/* Contact Section Animations */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOutScale {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Contact info cards - visible state */
+.contact-info.contact-visible {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.contact-info.contact-visible .info-card {
+  opacity: 0;
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+.contact-info.contact-visible .info-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.contact-info.contact-visible .info-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.contact-info.contact-visible .info-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Contact info cards - hidden state (reverse) */
+.contact-info.contact-hidden {
+  animation: slideOutToLeft 0.6s ease-in forwards;
+}
+
+.contact-info.contact-hidden .info-card {
+  animation: fadeOutScale 0.4s ease-in forwards;
+}
+
+/* Contact form - visible state */
+.contact-form.contact-visible {
+  animation: slideInFromRight 0.8s ease-out forwards;
+}
+
+/* Contact form - hidden state (reverse) */
+.contact-form.contact-hidden {
+  animation: slideOutToRight 0.6s ease-in forwards;
+}
+
+/* Form input animations */
+.form-group {
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  transform: translateY(-2px);
+  padding-left: 1.5rem;
+}
+
+/* Input label animation effect */
+.form-group::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #1DB954, #10a54a);
+  transition: width 0.4s ease;
+}
+
+.form-group:focus-within::before {
+  width: 100%;
+}
+
+/* Button pulse animation */
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(29, 185, 84, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(29, 185, 84, 0);
+  }
+}
+
+.contact-form button[type="submit"]:hover {
+  animation: buttonPulse 1.5s infinite;
+}
+
+/* Icon hover bounce */
+.info-card i {
+  transition: all 0.3s ease;
+}
+
+.info-card:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Social icons hover effect */
+.info-card a {
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(29, 185, 84, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.info-card a:hover::before {
+  width: 100%;
+  height: 100%;
 }
