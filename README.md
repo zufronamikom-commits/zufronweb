@@ -1,1 +1,104 @@
-kolaborasi bYB X Ztrd
+<div align="center">
+
+# 🎓 Zufron Trader Academy Web  
+**Kolaborasi Official antara Zufron Trader Academy × BriellaYB**
+
+🌐 **Live Website:**  
+https://zufronamikom-commits.github.io/zufronweb/
+
+---
+
+### 🔰 Status Build
+![Static Badge](https://img.shields.io/badge/STATUS-ACTIVE-brightgreen)
+![Static Badge](https://img.shields.io/badge/Version-1.0.0-blue)
+![Static Badge](https://img.shields.io/badge/Using-TailwindCSS-06B6D4)
+![Static Badge](https://img.shields.io/badge/Hosted%20On-GitHub%20Pages-black)
+
+</div>
+
+---
+
+## 🚀 Tentang Proyek
+Website ini dibuat sebagai platform digital untuk:
+- Menampilkan profil & aktivitas Zufron Trader Academy  
+- Memberikan edukasi dasar seputar trading  
+- Menjadi pusat informasi resmi  
+- Menghubungkan calon siswa ke kelas & komunitas
+
+Fokus pengembangan:
+- Desain modern & responsif  
+- Performa cepat  
+- Branding elegan  
+- Styling menggunakan Tailwind CSS  
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+- **HTML5**
+- **Tailwind CSS** *(CDN / build system)*
+- **JavaScript**
+- **GitHub Pages**
+
+---
+
+## 📸 Preview Website
+Tambahkan screenshot setelah upload ke repo (optional):
+<div>
+<img src="img/LandingPages.png" alt="Preview Website" width="800">
+<img src="img/AfterClickBurger.png" alt="Preview Website" width="800">
+<img src="img/contactUS.png" alt="Preview Website" width="800">
+</div>
+
+🧭 Roadmap Perkembangan Website
+✔ DONE
+
+ Landing Page
+ Responsive Design
+ Tailwind Setup
+ Deployment GitHub Pages
+
+🔜 NEXT UPDATE (Planned)
+
+ Halaman Kursus
+ Integrasi WhatsApp API
+ Sistem Testimoni
+ Dark & Light Mode
+ Blog Edukasi Trading
+ Dashboard Member
+
+
+🔄 Changelog
+v1.0.0 — Initial Release
+
+Rilis awal website
+Struktur halaman utama
+Styling menggunakan TailwindCSS
+Hosting GitHub Pages
+
+
+👨‍💻 Developer
+BriellaYB
+Developer utama website ini.
+Fokus: frontend, desain, UX, deployment.
+GitHub: https://github.com/zufronamikom-commits
+
+🤝 Kolaborator
+Zufron Trader Academy
+Sebagai penyedia konten, materi edukasi, branding, dan arahan proyek.
+
+⭐ Kontribusi
+Proyek bersifat terbuka untuk kolaborasi:
+
+Fork repository
+Buat branch
+Commit perubahan
+Ajukan Pull Request
+
+
+📜 Lisensi
+Proyek ini dilisensi dengan MIT License.
+Bebas digunakan dan dikembangkan.
+
+🙌 Terima Kasih!
+Terima kasih telah mendukung pengembangan website ini.
+Zufron Trader Academy akan terus berkembang untuk menciptakan edukasi trading yang berkualitas dan terpercaya.
